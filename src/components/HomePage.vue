@@ -10,11 +10,15 @@
 
     <p><button @click="handlePlus">+</button></p>
     <p><button @click="handleTimesPlus">times+</button></p>
+
+    <p>{{ doneToDos }}</p>
+    <p>{{ doneToDosCount }}</p>
+    <p>{{ toDoById }}</p>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   name: 'homePage',
@@ -32,7 +36,11 @@ export default {
         return this.localCount + state.count;
       }
     }),
-    ...mapState(['count', 'times'])
+    ...mapState(['count', 'times']),
+    ...mapGetters(['doneToDos', 'doneToDosCount']),
+    toDoById() {
+      return this.$store.getters.getTodoById(2);
+    }
   },
   methods: {
     handlePlus() {
