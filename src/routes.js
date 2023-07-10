@@ -1,7 +1,7 @@
 import HomePage from './components/HomePage';
 import HelloWorld from './components/HelloWorld';
 import FirstPage from './components/FirstPage';
-
+import SecondPage from './components/SecondPage';
 
 export default [
   {
@@ -22,5 +22,10 @@ export default [
     path: '/firstPage',
     name: 'firstPage',
     component: FirstPage
+  },
+  {
+    path: '/secondPage',
+    name: 'secondPage',
+    component: SecondPage
   }
 ];
