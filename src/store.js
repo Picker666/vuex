@@ -12,11 +12,15 @@ const state = {
 };
 
 const mutations = {
-  increment(state) {
-    state.count++;
+  increment(state, delta =1) {
+    state.count+=delta;
   },
-  timesIncrease(state) {
-    state.times++;
+  timesIncrease(state, payload) {
+    let delta = 1;
+    if (payload) {
+      delta = payload.times;
+    }
+    state.times+=delta;
   }
 };
 
