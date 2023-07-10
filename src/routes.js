@@ -2,6 +2,7 @@ import HomePage from './components/HomePage';
 import HelloWorld from './components/HelloWorld';
 import FirstPage from './components/FirstPage';
 import SecondPage from './components/SecondPage';
+import ThirdPage from './components/ThirdPage';
 
 export default [
   {
@@ -27,5 +28,10 @@ export default [
     path: '/secondPage',
     name: 'secondPage',
     component: SecondPage
+  },
+  {
+    path: '/thirdPage',
+    name: 'thirdPage',
+    component: ThirdPage
   }
 ];

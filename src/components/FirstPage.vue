@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import {mapState, mapMutations } from 'vuex';
+import { createNamespacedHelpers } from 'vuex';
+const { mapState, mapMutations } = createNamespacedHelpers('base');
 export default {
   name: 'FirstPage',
   computed: {
@@ -17,11 +18,11 @@ export default {
   },
   methods: {
     handleClick() {
-      this.$store.commit('increment', 10);
+      this.$store.commit('base/increment', 10);
       this.increment(11);
     },
     handleTimesClick() {
-      this.$store.commit({ type: 'timesIncrease', times: 100 });
+      this.$store.commit({ type: 'base/timesIncrease', times: 100 });
       this.timesIncrease({ times: 101 });
     },
     ...mapMutations(['increment', 'timesIncrease'])

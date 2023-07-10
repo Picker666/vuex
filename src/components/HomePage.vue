@@ -29,25 +29,28 @@ export default {
   },
   computed: {
     // count: function () { return this.$store.state.count; }
-    ...mapState({
+    ...mapState('base', {
       count1: state => state.count,
       times1: 'times',
+      // times1: state => state.times1,
       countPlusLocalState(state) {
+        console.log('state: ', state);
         return this.localCount + state.count;
       }
     }),
-    ...mapState(['count', 'times']),
-    ...mapGetters(['doneToDos', 'doneToDosCount']),
+    ...mapState('base', ['count', 'times']),
+    ...mapGetters('base', ['doneToDos', 'doneToDosCount']),
     toDoById() {
-      return this.$store.getters.getTodoById(2);
+      console.log('this.$store: ', this.$store);
+      return this.$store.getters['base/getTodoById'](2);
     }
   },
   methods: {
     handlePlus() {
-      this.$store.commit('increment');
+      this.$store.commit('base/increment');
     },
     handleTimesPlus() {
-      this.$store.commit('timesIncrease');
+      this.$store.commit('base/timesIncrease');
     }
   }
 }

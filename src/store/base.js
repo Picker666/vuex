@@ -1,6 +1,3 @@
-import Vue from 'vue';
-import Vuex from 'vuex';
-Vue.use(Vuex);
 
 const state = {
   count: 0,
@@ -31,15 +28,15 @@ const getters = {
 };
 
 const actions = {
-  syncIncrement({ commit }, delta=1) {
-    commit('increment', delta);
+  syncIncrement({ commit }, delta = 1) {
+    commit('increment', delta, {root: true});
   },
-  asyncIncrement({ commit, dispatch }, delta=2) {
+  asyncIncrement({ commit, dispatch }, delta = 2) {
     return new Promise((resolve) => {
       setTimeout(() => {
         commit('increment', delta);
         dispatch('syncIncrement', delta);
-        resolve(delta*2);
+        resolve(delta * 2);
       }, 1000);
     })
   },
@@ -47,13 +44,12 @@ const actions = {
     const d = await dispatch('asyncIncrement', 3);
     commit('timesIncrease', { times: d });
   }
-}
+};
 
-const store = new Vuex.Store({
+export default {
+  namespaced: true,
   state,
   mutations,
   getters,
   actions
-});
-
-export default store;
+};
